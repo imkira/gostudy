@@ -1,0 +1,508 @@
+Let's Go!
+Introduction to go (Part 1)
+10 Dec 2014
+
+Mario Freitas
+Software Engineer, CyberAgent
+imkira@gmail.com
+mario_freitas@cyberagent.co.jp
+http://github.com/imkira
+
+* About Me @ CyberAgent
+
+* About Me @ CyberAgent
+
+mario_freitas@cyberagent.co.jp
+Joined Ameba in 2011/08
+Prime Plaza 10F
+
+Done:
+
+- Coinplaza Video Poker (iOS/Android)
+- Million Chain (iOS/Android)
+
+Now:
+
+- duck (realtime messaging platform)
+- NGU
+- Learning go since 2014/08
+
+* What is Go?
+
+* What is Go?
+
+- Golang
+- Programming language
+- Experimental project at Google
+- Started in 2007, released in 2009
+
+.image gostudy1/logo.png
+.caption Gopher (ゴーファー)
+
+* Why?
+
+* Fun and Profit
+
+- Because "we hate C++"
+- "Make programming fun again"
+
+.image gostudy1/spider.jpg _ 550
+
+* Changing World
+
+- Advances in networking
+- Distributed systems
+- Multi-core CPUs
+- Large-scale programming
+
+* Problems
+
+- Tools getting slower
+- Computers not getting much faster
+- Slow development time
+- Difficult dependency management
+
+.image gostudy1/problem.png _ 400
+
+* Language Design
+
+- Imperative
+- Concurrent
+- Type-safe, memory-safe
+- Compilable
+- Garbage-collected
+- Fast
+- Lightweight
+- Remote package management
+
+* Mindset
+
+- Simple: short spec, few concepts!
+
+.image gostudy1/complexity.png _ 500
+
+* Mindset
+
+- No distractions:
+ - no type inheritance
+ - no generic programming
+ - no method or operator overloading
+ - no circular dependencies among packages
+ - no pointer arithmetic
+ - no assertions
+- Forget all you know about C++, Java, Ruby, Javascript, etc.
+ - When in Gopherland, do as Gophers do!
+- "Do not communicate by sharing memory; instead, share memory by communicating."
+
+* Go vs. C++
+
+Pros:
+
+- Simpler (virtual, templates, inline, operator+, protected, private, OMG???)
+- Memory-safe (*foo = 0x123; SEGFAULT)
+- Garbage-collected
+- Concurrent
+- Large standard library (stl, boost C++? LOL)
+- Large toolset (gofmt, godoc, govet, golint, godoc)
+
+Cons:
+
+- Dynamically loaded libraries
+
+* Go vs. Java
+
+Pros:
+
+- Machine-code compilable
+- Simpler
+- Faster
+- Lightweight
+- Better Garbage Collector
+
+Cons:
+
+- Cannot run on your Nokia
+- Ecosystem
+- Recruiting
+
+* Go vs. Javascript
+
+Pros:
+
+- Systems Language
+- No "quirks" (64bit numbers, undefined, null, ...)
+- Type-safety
+- Compilable
+- Large standard library
+- Large toolset (gofmt, godoc, govet, golint, godoc)
+
+Cons:
+
+- Cannot run on the browser
+- Dynamically loaded code
+
+* Go vs. node.js
+
+Pros:
+
+- Cleaner, simpler
+- More stable
+- Multi-threaded (forget JXCore)
+- Concurrent from the group up!
+- Better bindings: cgo!
+
+.image gostudy1/farewellnode.png _ 600
+
+* Go vs. Scala
+
+Pros:
+
+- Machine-code compilable
+- Simpler (51page Go spec, 191page Scala spec)
+- More explicit, easier to learn, more productive
+- Faster
+- Lightweight
+- Better Garbage Collector
+
+Cons:
+
+- Functional Programming
+- Shorter, more concise/eloquent
+- Java Ecosystem
+
+* Who is using Go?
+
+- Google, Atlassian, Nokia
+- bit.ly, Dropbox, Soundcloud, Airbrake, ...
+- Heroku, Cloud Foundry, Canonical, Digital Ocean, ...
+- ...
+
+* Where is Go?
+
+- ha/doozer
+- docker/docker
+- coreos/etcd, coreos/fleet
+- flynn/flynn
+- limetext/lime
+- google/cayley
+- bitly/nsq
+- hashicorp/serf, hashicorp/consul, hashicorp/terraform
+- cockroachdb/cockroach
+- http://gogs.io
+- ...
+
+* Let's Go!
+
+* Hello, 世界
+
+.play gostudy1/helloworld.go
+
+Terminal:
+
+  go build helloworld.go
+  ./helloworld
+
+* packages
+
+- 1 package, 1 directory
+- 1 or more .go files
+
+   package hoge
+
+- programs
+
+  package main
+
+- dependencies
+
+   import "encoding/json"
+
+- several dependencies
+
+   import (
+       "encoding/json"
+       "ghe.ca-tools.org/hoge/fuga"
+   )
+
+* packages (exports)
+
+- public
+
+  var MyVar = 1
+  type MyStruct struct{}
+  func MyFunction() {}
+
+- private
+
+  var myVar = 1
+  type myStruct struct{}
+  func myFunction() {}
+
+* variables
+
+  var x int
+  var y = 3
+  var a, b, c string
+  var d, e, f = 1, true, "Hello, 世界"
+
+  h := 5
+  i, j := 3.1415, false
+
+* types
+
+* numeric
+
+uint, uint8, uint16, uint32, uint64, int, int8, int16, int32, int64, float32, float64, complex64, complex128, byte, rune
+
+  123, uint8(123)
+  3.141516
+  complex(5, 3.12)
+  byte(13)
+  rune(26085), rune(26412), rune(35486)
+
+* string
+
+  "Hello, 世界"
+
+* array
+
+  [4]int
+  [5]int{1,2,3,4,5}
+  [9][9]int
+  [19][19][19]int
+  [...]int{1,2,3,4}
+  [...][2]int{{1,2},{3,4}}
+
+* struct
+
+  type hoge struct {
+    fuga int
+    piyo string
+  }
+
+  hoge{}
+  hoge{fuga: 1, piyo: "Hello, 世界"}
+  hoge{1, "Hello, 世界"}
+
+  struct{
+    fuga int
+    piyo string
+  }{
+    1,
+    "hello, 世界"
+  }
+
+* pointer
+
+  nil
+  *int
+  *hoge
+  *[4]int
+
+  x := 5
+  y := &x
+  z := new(int)
+  *z = 123
+  &hoge{1, "hello, 世界"}
+
+* function
+
+  func()
+  func(x int) int
+  func(a, b int, z float32) (bool)
+
+* interface
+
+  type Hoge interface {
+    Fuga(b Buffer) bool
+    Piyo()
+  }
+
+* slice
+
+  []int
+  [][]string
+
+* map
+
+  map[string]int
+  map[string]map[string]string
+
+* channel
+
+  chan int
+  chan<- string
+  <-chan bool
+
+* Let's Go!
+
+* function
+
+program start:
+
+  func main() {
+  }
+
+library start (optional):
+
+  func init() {
+  }
+
+* functions
+
+.play gostudy1/functions.go /start block/,/end block/
+
+* functions (multiple return values)
+
+.play gostudy1/multreturns.go /start block/,/end block/
+
+* functions (variadic)
+
+.play gostudy1/variadic.go /start block/,/end block/
+
+* closures
+
+.play gostudy1/closures.go /start block/,/end block/
+
+* struct (methods)
+
+.play gostudy1/struct1.go /start block/,/end block/
+
+* struct (embedding)
+
+.play gostudy1/struct2.go /start block/,/end block/
+
+* interface
+
+.play gostudy1/interface.go /start block/,/end block/
+
+* interface (empty interface)
+
+.play gostudy1/emptyinterface.go /start block/,/end block/
+
+* interface (type assertion)
+
+.play gostudy1/typeassertion.go /start block/,/end block/
+
+* interface (type switch)
+
+.play gostudy1/typeassertion2.go /start block/,/end block/
+
+* interface (embedding)
+
+.code gostudy1/embeddinginterface.go /start block/,/end block/
+
+* interface (embedding)
+
+.play gostudy1/embeddinginterface.go /start intCalculator/,/end intCalculator/
+
+* slices
+
+* slices
+
+- pointer
+- length
+- capacity
+
+.image gostudy1/slice1.png
+
+* slices
+
+.play gostudy1/slices.go /start block/,/end block/
+
+* slices (selectors)
+
+.play gostudy1/sliceselectors.go /start block/,/end block/
+
+.image gostudy1/slice2.png _ 300
+.caption a[2:4]
+
+* slices (append)
+
+.play gostudy1/sliceappend.go /start block/,/end block/
+
+* slices (remove)
+
+.play gostudy1/sliceremove.go /start block/,/end block/
+
+* slices (range)
+
+.play gostudy1/slicerange.go /start block/,/end block/
+
+* maps
+
+* maps
+
+.play gostudy1/maps.go /start block/,/end block/
+
+* maps (getting)
+
+.play gostudy1/mapsget.go /start block/,/end block/
+
+* maps (putting)
+
+.play gostudy1/mapsput.go /start block/,/end block/
+
+* maps (deleting)
+
+.play gostudy1/mapsdel.go /start block/,/end block/
+
+* goroutines
+
+* goroutines
+
+.play gostudy1/goroutines.go /start block/,/end block/
+
+* channels
+
+* channels (read and write)
+
+.play gostudy1/channels1.go /start block/,/end block/
+
+* channels (deadlock panic)
+
+.play gostudy1/channels2.go /start block/,/end block/
+
+* channels (close panic)
+
+.play gostudy1/channels6.go /start block/,/end block/
+
+* channels (1 writer, 1 reader)
+
+.play gostudy1/channels3.go /start block/,/end block/
+
+* channels (1 writer, many readers)
+
+.play gostudy1/channels4.go /start block/,/end block/
+
+* channels (many writers, many readers)
+
+.play gostudy1/channels5.go /start block/,/end block/
+
+* channels (O(n) broadcast)
+
+.code gostudy1/channelsbroadcast1.go /start block/,/end block/
+
+* channels (O(1) broadcast)
+
+.code gostudy1/channelsbroadcast2.go /start block/,/end block/
+
+* channels (O(1) broadcast)
+
+.play gostudy1/channelsbroadcast2.go /start main/,/end main/
+
+* channels (select many)
+
+.play gostudy1/channelselect.go /start block/,/end block/
+
+* channels (check readability)
+
+.play gostudy1/channelselect2.go /start block/,/end block/
+
+* channels (check writability)
+
+.play gostudy1/channelselect3.go /start block/,/end block/
+
+* channels (simulate write lock)
+
+.play gostudy1/channelselect4.go /start block/,/end block/
