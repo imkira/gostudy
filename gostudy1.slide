@@ -221,7 +221,7 @@ Terminal:
 
    import (
        "encoding/json"
-       "ghe.ca-tools.org/hoge/fuga"
+       "example.com/hoge/fuga"
    )
 
 * packages (exports)
