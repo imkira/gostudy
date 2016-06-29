@@ -1,0 +1,126 @@
+Go Traps
+For Intermediate/Advanced Beginners
+29 Jun 2016
+
+Mario Freitas
+Software Engineer, CyberAgent
+imkira@gmail.com
+mario_freitas@cyberagent.co.jp
+http://github.com/imkira
+
+* About Me @ CyberAgent
+
+mario_freitas@cyberagent.co.jp
+Joined Ameba in 2011/08
+Prime Plaza 10F
+
+Done:
+
+- Coinplaza Video Poker (iOS/Android)
+- Million Chain (iOS/Android)
+- duck (realtime messaging platform)
+
+Now:
+
+- Raytube (video transcoding platform)
+- Learning go since 2014/08
+
+* Go Traps
+
+.image gostudy2/trap.png 600 _
+
+* Go Traps
+
+- Data Races
+- Race Conditions
+- Deadlocks
+- Resource Leaks
+
+* Data races
+
+.image gostudy2/datarace.jpg 500 _
+
+* Data races
+
+.play gostudy2/datarace.go /START OMIT/,/END OMIT/
+
+* Data races (fix using sync/atomic)
+
+.play gostudy2/datarace-fix.go /START OMIT/,/END OMIT/
+
+* Race conditions
+
+.image gostudy2/racecondition.jpg 400 _
+
+* Race conditions
+
+.play gostudy2/racecondition.go /START OMIT/,/END OMIT/
+
+* Race conditions (fix using sync/atomic)
+
+.play gostudy2/racecondition-fix.go /START OMIT/,/END OMIT/
+
+* Deadlocks
+
+.image gostudy2/deadlock.jpg 500 _
+
+* Deadlocks (channels)
+
+.play gostudy2/deadlock-chan.go /START OMIT/,/END OMIT/
+
+* Deadlocks (unbuffered channels)
+
+.image gostudy2/chan1.png 500 _
+
+* Deadlocks (buffered channels)
+
+.image gostudy2/chan2.png 500 _
+
+* Deadlocks (mutexes)
+
+.play gostudy2/deadlock-mutex.go /START OMIT/,/END OMIT/
+
+* Deadlocks (mutexes)
+
+.image gostudy2/deadlock-mutex.png 500 _
+
+* Deadlocks (mutexes fix)
+
+.play gostudy2/deadlock-mutex-fix.go /START OMIT/,/END OMIT/
+
+* Resource Leaks
+
+.image gostudy2/leak.jpg 500 _
+
+* Resource Leaks (time.Ticker)
+
+.play gostudy2/leak-ticker.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (time.Ticker fix)
+
+.play gostudy2/leak-ticker-fix.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (goroutine)
+
+.play gostudy2/leak-goroutine.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (goroutine fix #1)
+
+.play gostudy2/leak-goroutine-fix.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (goroutine fix #2)
+
+.play gostudy2/leak-goroutine-fix2.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (net/http.Client)
+
+.play gostudy2/leak-http-client.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (net/http.Client < go1.3 fix#1)
+
+.play gostudy2/leak-http-client-fix1.go /START OMIT/,/END OMIT/
+
+* Resource Leaks (net/http.Client fix#2)
+
+.play gostudy2/leak-http-client-fix2.go /START OMIT/,/END OMIT/
+
